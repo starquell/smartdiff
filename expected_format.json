@@ -1,0 +1,32 @@
+[
+    {
+        "short": "Short description of diff",
+        "long": "Long description of diff",
+        "locs": [
+            {
+                "removed": {
+                    "line": 1,
+                    "col": 1,
+                    "length": 10
+                },
+                "added": {
+                    "line": 10,
+                    "col": 13,
+                    "length": 19
+                }
+            },
+            {
+                "removed": {
+                    "line": 3,
+                    "col": 6,
+                    "length": 14
+                },
+                "added": {
+                    "line": 5,
+                    "col": 8,
+                    "length": 23
+                }
+            }
+        ]
+    }
+]
