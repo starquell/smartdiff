@@ -1,0 +1,46 @@
+{
+    "changes": [
+        {
+            "short": "Imported time module",
+            "long": "Imported the 'time' module to use its functions for tracking and calculating time-related operations, such as measuring uptime.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 2,
+                        "col": 1,
+                        "end_line": 2,
+                        "end_col": 11
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Initialized global start time",
+            "long": "Initialized a global variable 'start_time' to capture the exact time when the server application starts.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 5,
+                        "col": 1,
+                        "end_line": 5,
+                        "end_col": 24
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added new route to calculate and return server uptime",
+            "long": "Introduced a new route '/uptime' that calculates and returns the server's uptime in hours, minutes, and seconds. This endpoint utilizes the time elapsed since 'start_time' to provide the current uptime.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 11,
+                        "col": 1,
+                        "end_line": 19,
+                        "end_col": 5
+                    }
+                }
+            ]
+        }
+    ]
+}

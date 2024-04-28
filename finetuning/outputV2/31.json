@@ -1,0 +1,23 @@
+{
+    "changes": [
+        {
+            "short": "Refactored addUser to return a Promise and handle errors asynchronously.",
+            "long": "The 'addUser' method of the 'UserManager' class was refactored from a synchronous method throwing errors directly, to an asynchronous method returning a Promise.",
+            "code": [
+                {
+                    "before": "addUser(user: User): void {\n    if (this.exists(user.id)) {\n        throw new Error(\"User already exists\");\n    }\n    this.users.push(user);\n}",
+                    "after": "async addUser(user: User): Promise<void> {\n    return new Promise((resolve, reject) => {\n        if (this.exists(user.id)) {\n            reject(new Error(\"User already exists\"));\n        } else {\n            this.users.push(user);\n            resolve();\n        }\n    });\n}"
+                }
+            ]
+        },
+        {
+            "short": "Added exists method to check user presence by ID.",
+            "long": "Introduced a new 'exists' method to the 'UserManager' class to check if a user with a specific ID already exists in the users array. This method uses the 'some' function to search through the user array, encapsulating the existence check and improving code modularity and reuse.",
+            "code": [
+                {
+                    "after": "exists(userId: number): boolean {\n    return this.users.some(user => user.id === userId);\n}"
+                }
+            ]
+        }
+    ]
+}

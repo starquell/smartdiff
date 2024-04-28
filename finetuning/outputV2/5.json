@@ -1,0 +1,28 @@
+{
+    "changes": [
+        {
+            "short": "Added imports and logger initialization in MathUtils.",
+            "long": "The Logger class from java.util.logging is imported, and a static final Logger named 'logger' is initialized for the MathUtils class to enable logging at various points in the calculateAverage function.",
+            "code": [
+                {
+                    "before": "import java.util.List;",
+                    "after": "import java.util.List;\nimport java.util.logging.Logger;\n\nprivate static final Logger logger = Logger.getLogger(MathUtils.class.getName());"
+                }
+            ]
+        },
+        {
+            "short": "Added logging at various stages of average calculation.",
+            "long": "Logging statements have been added to the calculateAverage function: before calculation to log the input list, in the case of an error to log the absence of input numbers, and after calculation to log the computed average. These changes improve the traceability of function execution and error handling.",
+            "code": [
+                {
+                    "before": "if (numbers == null || numbers.isEmpty()) {",
+                    "after": "logger.info(\"Calculating average for list: \" + numbers);\nif (numbers == null || numbers.isEmpty()) {\n    logger.severe(\"No numbers provided for average calculation.\");"
+                },
+                {
+                    "before": "return average;",
+                    "after": "logger.info(\"Calculated average: \" + average);\nreturn average;"
+                }
+            ]
+        }
+    ]
+}

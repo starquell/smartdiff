@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored loop to use list comprehension for filtering even numbers.",
+            "long": "The function `filter_even_numbers` was refactored to use list comprehension for creating the `even_numbers` list, instead of using a traditional for-loop with an if-condition.",
+            "code": [
+                {
+                    "before": "even_numbers = []\n    for num in numbers:\n        if num % 2 == 0:\n            even_numbers.append(num)",
+                    "after": "even_numbers = [num for num in numbers if num % 2 == 0]"
+                }
+            ]
+        }
+    ]
+}

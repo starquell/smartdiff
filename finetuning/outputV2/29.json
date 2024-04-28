@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored fetchData to use async/await and error handling.",
+            "long": "The `fetchData` function was refactored from using Node.js-style callbacks and event listeners to a modern async/await pattern with try/catch for error handling.",
+            "code": [
+                {
+                    "before": "function fetchData(callback) {\n    http.get('http://example.com', (response) => {\n        let data = '';\n        response.on('data', (chunk) => { data += chunk; });\n        response.on('end', () => callback(null, data));\n    }).on('error', (err) => callback(err));\n}",
+                    "after": "async function fetchData() {\n    try {\n        const response = await fetch('http://example.com');\n        const data = await response.text();\n        return data;\n    } catch (error) {\n        console.error('Fetch error:', error);\n        throw error;\n    }\n}"
+                }
+            ]
+        }
+    ]
+}

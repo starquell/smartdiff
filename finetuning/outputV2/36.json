@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored user_has_access? method to use guard clauses.",
+            "long": "The `user_has_access?` method was refactored to utilize guard clauses for checking conditions that prevent a user from accessing a file. This refactoring simplifies the method by replacing conditional blocks with a series of return statements that immediately exit the method if conditions are met, making the code easier to read and understand.",
+            "code": [
+                {
+                    "before": "def user_has_access?(user, file)\n    if user.nil?\n        return false\n    end\n\n    if !user.active? || !file.exists?\n        return false\n    end\n    return true\nend",
+                    "after": "def user_has_access?(user, file)\n    return false if user.nil?\n    return false unless user.active?\n    return false unless file.exists?\n\n    return true\nend"
+                }
+            ]
+        }
+    ]
+}

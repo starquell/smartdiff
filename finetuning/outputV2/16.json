@@ -1,0 +1,22 @@
+{
+    "changes": [
+        {
+            "short": "Removed area method from Rectangle class.",
+            "long": "The `area` method, which calculates the area of a rectangle by multiplying its width and height, was removed from the Rectangle class.",
+            "code": [
+                {
+                    "before": "double area() {\n    return width * height;\n}"
+                }
+            ]
+        },
+        {
+            "short": "Added area method to Square class.",
+            "long": "An `area` method was added to the Square class to calculate the area of a square by squaring its side length.",
+            "code": [
+                {
+                    "after": "double area() {\n    return side * side;\n}"
+                }
+            ]
+        }
+    ]
+}

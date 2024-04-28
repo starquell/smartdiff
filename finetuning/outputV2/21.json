@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored conditionals to a switch statement for handling response statuses.",
+            "long": "The function `handleResponseStatus` was refactored from using multiple if-else conditions to a switch statement.",
+            "code": [
+                {
+                    "before": "if (status === 200) {\n        console.log('Success!');\n    } else if (status === 400) {\n        console.error('Bad Request');\n    } else if (status === 404) {\n        console.error('Not Found');\n    } else if (status === 500) {\n        console.error('Internal Server Error');\n    } else {\n        console.error('Unknown error');\n    }",
+                    "after": "switch (status) {\n        case 200:\n            console.log('Success!');\n            break;\n        case 400:\n            console.error('Bad Request');\n            break;\n        case 404:\n            console.error('Not Found');\n            break;\n        case 500:\n            console.error('Internal Server Error');\n            break;\n        default:\n            console.error('Unknown error');\n    }"
+                }
+            ]
+        }
+    ]
+}

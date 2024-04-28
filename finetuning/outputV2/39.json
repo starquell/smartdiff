@@ -1,0 +1,34 @@
+{
+    "changes": [
+        {
+            "short": "Added check to prevent duplicate profiles.",
+            "long": "Modified the 'create_profile' function to check if the profile already exists in the list before appending it.",
+            "code": [
+                {
+                    "before": "profiles.append(profile)",
+                    "after": "if profile not in profiles:\n        profiles.append(profile)"
+                }
+            ]
+        },
+        {
+            "short": "Refactored delete_profile to avoid using global keyword.",
+            "long": "The 'delete_profile' function was refactored to remove the use of the global keyword by directly modifying the profiles list with a list comprehension, adhering to Pythonic best practices.",
+            "code": [
+                {
+                    "before": "global profiles",
+                    "after": "# Using a more pythonic way without global keyword"
+                }
+            ]
+        },
+        {
+            "short": "Updated list_profiles to return sorted profiles.",
+            "long": "Changed the 'list_profiles' function to return profiles sorted by name.",
+            "code": [
+                {
+                    "before": "return profiles",
+                    "after": "return sorted(profiles, key=lambda x: x['name'])"
+                }
+            ]
+        }
+    ]
+}

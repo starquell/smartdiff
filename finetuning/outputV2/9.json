@@ -1,0 +1,33 @@
+{
+    "changes": [
+        {
+            "short": "Imported the time module for time functions.",
+            "long": "The time module has been imported at the beginning of the script to utilize various time-related functions within the application. This setup allows for operations such as calculating elapsed time and formatting timestamps.",
+            "code": [
+                {
+                    "before": "from flask import Flask",
+                    "after": "from flask import Flask\nimport time"
+                }
+            ]
+        },
+        {
+            "short": "Initialized application start time.",
+            "long": "A global variable 'start_time' is initialized at the start of the application to store the current time. This timestamp marks the launch time of the application, used later to calculate the uptime.",
+            "code": [
+                {
+                    "before": "app = Flask(__name__)",
+                    "after": "app = Flask(__name__)\nstart_time = time.time()"
+                }
+            ]
+        },
+        {
+            "short": "Added a new route to calculate and return the application's uptime.",
+            "long": "A new route '/uptime' has been defined which calculates the application's uptime since its launch. The uptime is formatted into hours, minutes, and seconds and returned as a JSON response.",
+            "code": [
+                {
+                    "after": "@app.route('/uptime')\ndef get_uptime():\n    current_time = time.time()\n    uptime_seconds = int(current_time - start_time)\n    hours, remainder = divmod(uptime_seconds, 3600)\n    minutes, seconds = divmod(remainder, 60)\n    return {\n        'uptime': f'{hours} hours, {minutes} minutes, {seconds} seconds'\n    }"
+                }
+            ]
+        }
+    ]
+}

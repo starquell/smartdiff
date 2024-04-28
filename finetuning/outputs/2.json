@@ -1,0 +1,44 @@
+{
+    "changes": [
+        {
+            "short": "Refactored subprocess arguments to a separate variable",
+            "long": "Refactored the subprocess command to use a separate list for arguments, named 'args', improving code clarity and maintainability. This allows easier updates and modifications to the argument list used in subprocess calls.",
+            "locations": [
+                {
+                    "removed": {
+                        "line": 1,
+                        "col": 1,
+                        "end_line": 9,
+                        "end_col": 2
+                    },
+                    "added": {
+                        "line": 10,
+                        "col": 1,
+                        "end_line": 20,
+                        "end_col": 1
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Increased timeout in ping command",
+            "long": "Changed the timeout parameter '-t' for the ping command from '50' to '100', extending the wait time for responses.",
+            "locations": [
+                {
+                    "removed": {
+                        "line": 5,
+                        "col": 18,
+                        "end_line": 5,
+                        "end_col": 19
+                    },
+                    "added": {
+                        "line": 4,
+                        "col": 11,
+                        "end_line": 4,
+                        "end_col": 13
+                    }
+                }
+            ]
+        }
+    ]
+}

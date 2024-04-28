@@ -1,0 +1,60 @@
+{
+    "changes": [
+        {
+            "short": "Imported aliased for SQL aliasing",
+            "long": "Added an import statement for 'aliased' from SQLAlchemy's ORM module.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 4,
+                        "col": 1,
+                        "end_line": 4,
+                        "end_col": 34
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added create_app function for Flask app initialization",
+            "long": "Introduced a new function 'create_app' to set up and return a Flask application configured with SQLAlchemy. This function encapsulates the app initialization, including database setup with an SQLite connection.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 8,
+                        "col": 1,
+                        "end_line": 12,
+                        "end_col": 14
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Modified get_users to add sorting by user ID",
+            "long": "Updated the 'get_users' function to include sorting by 'User.id', enhancing the order consistency of user data retrieval.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 25,
+                        "col": 32,
+                        "end_line": 25,
+                        "end_col": 48
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added get_users_paginated for paginated user retrieval",
+            "long": "Added a new function 'get_users_paginated' that handles paginated retrieval of user records. This function calculates total pages and allows fetching specific subsets of user data based on page number and page size, improving data manageability for large user sets.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 27,
+                        "col": 1,
+                        "end_line": 40,
+                        "end_col": 5
+                    }
+                }
+            ]
+        }
+    ]
+}

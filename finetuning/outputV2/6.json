@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Changed the type of the Indentation property in SqlFormatterOptions struct.",
+            "long": "In the SqlFormatterOptions struct, the type of the 'IndentationSize' property has been modified to a custom type 'Models.Indentation' from an integer. This change suggests a move towards using a more complex type that can potentially hold more detailed indentation settings beyond just size.",
+            "code": [
+                {
+                    "before": "public int IndentationSize { get; }",
+                    "after": "public Models.Indentation Indentation { get; }"
+                }
+            ]
+        }
+    ]
+}

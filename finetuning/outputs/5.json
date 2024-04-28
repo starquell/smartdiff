@@ -1,0 +1,60 @@
+{
+    "changes": [
+        {
+            "short": "Imported Logger from java.util.logging",
+            "long": "Added an import statement for the Logger class from the java.util.logging package to enable logging within the MathUtils class.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 2,
+                        "col": 1,
+                        "end_line": 2,
+                        "end_col": 32
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Initialized static Logger instance",
+            "long": "Declared a private static final Logger to facilitate logging of operations within the MathUtils class, using the class's name as the logger's identifier.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 4,
+                        "col": 1,
+                        "end_line": 4,
+                        "end_col": 81
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added logging to calculateAverage method",
+            "long": "Enhanced the calculateAverage method with logging statements to track the beginning of the calculation, any potential errors due to null or empty input lists, and the final computed average.",
+            "locations": [
+                {
+                    "added": [
+                        {
+                            "line": 7,
+                            "col": 5,
+                            "end_line": 7,
+                            "end_col": 60
+                        },
+                        {
+                            "line": 9,
+                            "col": 9,
+                            "end_line": 9,
+                            "end_col": 70
+                        },
+                        {
+                            "line": 17,
+                            "col": 5,
+                            "end_line": 17,
+                            "end_col": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

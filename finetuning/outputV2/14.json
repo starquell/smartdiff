@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Added null check for item retrieval in GetItem method.",
+            "long": "In the GetItem method of a controller, a null check was added after retrieving an item from the repository. If the item is null, indicating that no item was found with the given ID, the method now returns a NotFound result instead of proceeding. This improves error handling by providing a clear response when an item cannot be located.",
+            "code": [
+                {
+                    "before": "var item = _repository.GetItem(id);\nreturn Ok(item);",
+                    "after": "var item = _repository.GetItem(id);\nif (item == null)\n    return NotFound();\nreturn Ok(item);"
+                }
+            ]
+        }
+    ]
+}

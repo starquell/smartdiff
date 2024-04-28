@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Reorganized constants within the file.",
+            "long": "Constants `ThresholdLimit` and `DefaultRetryCount` were reorganized in the file. `ThresholdLimit` was moved lower in the file, and `DefaultRetryCount` was moved higher.",
+            "code": [
+                {
+                    "before": "const ThresholdLimit = 50\nconst DefaultRetryCount = 3",
+                    "after": "const DefaultRetryCount = 3\nconst ThresholdLimit = 50"
+                }
+            ]
+        },
+        {
+            "short": "Updated checkLimits function to use DefaultRetryCount.",
+            "long": "The `checkLimits` function's condition was updated to use `DefaultRetryCount` instead of `ThresholdLimit`.",
+            "code": [
+                {
+                    "before": "func checkLimits(value int) bool {\n    return value < ThresholdLimit\n}",
+                    "after": "func checkLimits(value int) bool {\n    return value < DefaultRetryCount\n}"
+                }
+            ]
+        }
+    ]
+}

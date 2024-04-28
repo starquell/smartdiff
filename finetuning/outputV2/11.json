@@ -1,0 +1,32 @@
+{
+    "changes": [
+        {
+            "short": "Added a constant for the server port.",
+            "long": "Introduced a constant 'PORT' set to 3000",
+            "code": [
+                {
+                    "before": "const app = express();",
+                    "after": "const app = express();\nconst PORT = 3000;"
+                }
+            ]
+        },
+        {
+            "short": "Added a new route to provide the current datetime.",
+            "long": "A new GET route '/datetime' was added that returns the current date and time in ISO format as a JSON response. This route enhances the server's functionality by providing time information.",
+            "code": [
+                {
+                    "after": "app.get('/datetime', (req, res) => {\n    res.json({\n        datetime: new Date().toISOString()\n    });\n});"
+                }
+            ]
+        },
+        {
+            "short": "Added server listening setup.",
+            "long": "Added code to make the server listen on the defined PORT, with a console log to indicate successful server startup. This confirms the server is running and listening for requests on the specified port.",
+            "code": [
+                {
+                    "after": "app.listen(PORT, () => console.log(`Server running on port ${PORT}`));"
+                }
+            ]
+        }
+    ]
+}

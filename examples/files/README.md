@@ -1,0 +1,1 @@
+Folder with original and changed files that can be used for testing diff checking.

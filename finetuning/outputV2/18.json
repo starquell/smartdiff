@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored fetchUserData function to use async/await.",
+            "long": "The `fetchUserData` function was refactored from using promise-based syntax with `.then()` and `.catch()` to an `async` function using `await` for handling asynchronous operations. This change enhances readability and error handling by using `try`/`catch` blocks for managing exceptions directly within the function.",
+            "code": [
+                {
+                    "before": "function fetchUserData(userId) {\n    return fetch(`/api/user/${userId}`)\n        .then(response => response.json())\n        .then(data => {\n            console.log('User data:', data);\n        })\n        .catch(error => console.error('Error fetching user data:', error));\n}",
+                    "after": "async function fetchUserData(userId) {\n    try {\n        const response = await fetch(`/api/user/${userId}`);\n        const data = await response.json();\n        console.log('User data:', data);\n    } catch (error) {\n        console.error('Error fetching user data:', error);\n    }\n}"
+                }
+            ]
+        }
+    ]
+}

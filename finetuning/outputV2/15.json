@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Modified the getUser function to be asynchronous.",
+            "long": "The `getUser` function was updated to be an asynchronous function using 'async' keyword.",
+            "code": [
+                {
+                    "before": "export function getUser(req: Request, res: Response): void {",
+                    "after": "export async function getUser(req: Request, res: Response): void {"
+                }
+            ]
+        },
+        {
+            "short": "Changed the response format in getUser function.",
+            "long": "The response format of the `getUser` function was changed. Instead of directly returning the user object, it now returns an object with a `success` status and the user data nested under `data`.",
+            "code": [
+                {
+                    "before": "res.json(user);",
+                    "after": "res.json({ success: true, data: user });"
+                }
+            ]
+        }
+    ]
+}

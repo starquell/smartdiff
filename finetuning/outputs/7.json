@@ -1,0 +1,32 @@
+{
+    "changes": [
+        {
+            "short": "Added input validation to factorial function",
+            "long": "Enhanced the factorial function by introducing a precondition check that raises a ValueError if the input number is negative. This ensures the function handles only valid, non-negative integers, adhering to the mathematical definition of factorial.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 2,
+                        "col": 0,
+                        "end_line": 3,
+                        "end_col": 73
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added main execution block to script",
+            "long": "Introduced a main execution block that tests the factorial function with a sample input of 5 when the script is run directly.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 9,
+                        "col": 1,
+                        "end_line": 10,
+                        "end_col": 23
+                    }
+                }
+            ]
+        }
+    ]
+}

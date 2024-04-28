@@ -1,0 +1,43 @@
+{
+    "changes": [
+        {
+            "short": "Removed using namespace std.",
+            "long": "The directive 'using namespace std;' was removed from the code to avoid namespace pollution. This change encourages the explicit use of the 'std::' prefix, increasing code clarity and preventing name clashes in larger projects.",
+            "code": [
+                {
+                    "before": "using namespace std;"
+                }
+            ]
+        },
+        {
+            "short": "Moved divide function into the Calculator class.",
+            "long": "The divide function was moved into a new class called Calculator, converting it from a standalone function to a static method of the class.",
+            "code": [
+                {
+                    "before": "double divide(double numerator, double denominator) {\n    return numerator / denominator;\n}",
+                    "after": "class Calculator {\npublic:\n    static double divide(double numerator, double denominator) {\n        return numerator / denominator;\n    }\n};"
+                }
+            ]
+        },
+        {
+            "short": "Added error handling for zero denominator in Calculator's divide method.",
+            "long": "Enhanced the divide method in the Calculator class with error handling to throw an exception if the denominator is zero. This change prevents division by zero errors, improving the method's robustness and reliability.",
+            "code": [
+                {
+                    "before": "class Calculator {\npublic:\n    static double divide(double numerator, double denominator) {\n        return numerator / denominator;\n    }\n};",
+                    "after": "class Calculator {\npublic:\n    static double divide(double numerator, double denominator) {\n        if (denominator is 0) {\n            throw std::invalid_argument(\"Denominator cannot be zero\");\n        }\n        return numerator / denominator;\n    }\n};"
+                }
+            ]
+        },
+        {
+            "short": "Updated main function to use Calculator class and added exception handling.",
+            "long": "The main function now uses the Calculator class's divide method. Added try-catch blocks to handle exceptions, specifically to catch and report division by zero errors through user-friendly messages using std::cerr.",
+            "code": [
+                {
+                    "before": "int main() {\n    cout << \"Result: \" << divide(10.0, 0.0) << endl;\n    return 0;\n}",
+                    "after": "int main() {\n    try {\n        std::cout << \"Result: \" << Calculator::divide(10.0, 0.0) << std::endl;\n    } catch (const std::exception& e) {\n        std::cerr << \"Caught exception: \" << e.what() << std::endl;\n    }\n    return 0;\n}"
+                }
+            ]
+        }
+    ]
+}

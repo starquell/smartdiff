@@ -1,0 +1,23 @@
+{
+    "changes": [
+        {
+            "short": "Updated database initialization in the constructor.",
+            "long": "Modified the initialization of the `db` property within the constructor of a class.",
+            "code": [
+                {
+                    "before": "this.db = sinksDB()",
+                    "after": "this.db = sinksDB().get()"
+                }
+            ]
+        },
+        {
+            "short": "Removed left join in the getSinks method.",
+            "long": "The database query within the `getSinks` method was simplified by removing a `leftJoin` operation.",
+            "code": [
+                {
+                    "before": ".leftJoin(\"primary_sinks\", \"primary_sinks.sink_id\", \"sinks.id\")",
+                }
+            ]
+        }
+    ]
+}

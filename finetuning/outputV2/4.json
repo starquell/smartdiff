@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Modified conditions for removing the 'content-encoding' header.",
+            "long": "In the function httpAdapter, the condition under which the 'content-encoding' header is removed has been changed. Previously, the header was removed if data was present but of zero length. Now, it's removed either when there is no response length or the response status code is 204, and if the 'content-encoding' header is still present.",
+            "code": [
+                {
+                    "before": "if (data && data.length === 0 && res.headers['content-encoding'])",
+                    "after": "if ((!responseLength || res.statusCode === 204) && res.headers['content-encoding'])"
+                }
+            ]
+        }
+    ]
+}

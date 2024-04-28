@@ -1,0 +1,23 @@
+{
+    "changes": [
+        {
+            "short": "Modified the greet function to accept a parameter and conditionally output.",
+            "long": "The greet function now takes a parameter 'userName'. If 'userName' is provided, it outputs a personalized greeting using the provided name. If no name is provided, it defaults to greeting with 'Hello, World!'.",
+            "code": [
+                {
+                    "before": "function greet() {\n    console.log(\"Hello, World!\");",
+                    "after": "function greet(userName) {\n    if (userName) {\n        console.log(`Hello, ${userName}!`);\n    } else {\n        console.log(\"Hello, World!\");\n    }\n}"
+                }
+            ]
+        },
+        {
+            "short": "Added a function call to greet with a specific name.",
+            "long": "A call to the greet function has been added at the script's end, passing 'Alice' as an argument. This demonstrates how the modified function can be used to greet a specific person.",
+            "code": [
+                {
+                    "after": "greet(\"Alice\");"
+                }
+            ]
+        }
+    ]
+}

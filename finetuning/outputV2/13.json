@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Changed indentation from 4 spaces to 8 spaces in ExampleMethod.",
+            "long": "The indentation within the `ExampleMethod` of the `ExampleClass` class was increased from 4 spaces to 8 spaces.",
+            "code": [
+                {
+                    "before": "    public void ExampleMethod()\n    {\n        Console.WriteLine(\"Hello, world!\");\n    }",
+                    "after": "        public void ExampleMethod()\n        {\n            Console.WriteLine(\"Hello, world!\");\n        }"
+                }
+            ]
+        }
+    ]
+}

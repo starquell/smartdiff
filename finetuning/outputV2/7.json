@@ -1,0 +1,22 @@
+{
+    "changes": [
+        {
+            "short": "Added error handling for negative inputs in factorial function.",
+            "long": "An if statement has been added at the beginning of the factorial function to check if the input number 'n' is negative. If it is, the function raises a ValueError to indicate that the factorial is not defined for negative numbers. This ensures the function's robustness by preventing invalid inputs.",
+            "code": [
+                {
+                    "after": "def factorial(n):\n    if n < 0:\n        raise ValueError(\"Factorial is not defined for negative numbers\")"
+                }
+            ]
+        },
+        {
+            "short": "Added a main block to execute the factorial function.",
+            "long": "A main block has been added to the script to allow direct execution from the command line. It calculates and prints the factorial of 5 when the script is run as the main program. This addition is useful for testing or direct usage of the factorial function.",
+            "code": [
+                {
+                    "after": "if __name__ == \"__main__\":\n    print(factorial(5))"
+                }
+            ]
+        }
+    ]
+}

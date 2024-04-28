@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Enhanced the log function to support different logging levels.",
+            "long": "The `log` function was enhanced to accept a logging level as the first argument, which allows specifying the type of log (debug, info, error). The function uses a switch statement to handle different levels of logging, directing them to the appropriate console method.",
+            "code": [
+                {
+                    "before": "function log(message) {\n    console.log(message);\n}",
+                    "after": "function log(level, message) {\n    switch(level) {\n        case 'debug':\n            console.debug('DEBUG:', message);\n            break;\n        case 'info':\n            console.info('INFO:', message);\n            break;\n        case 'error':\n            console.error('ERROR:', message);\n            break;\n        default:\n            console.log('LOG:', message);\n    }\n}"
+                }
+            ]
+        }
+    ]
+}

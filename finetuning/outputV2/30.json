@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Refactored get_diff method to enhance functionality and integrate with OpenAI API.",
+            "long": "Significant enhancements were made to the 'get_diff' method. The method now prints the unified diff before processing, logs the process steps, and integrates more complex interactions with the OpenAI API. It also uses a more sophisticated data structure for the return type, shifting from returning a string to a list of 'SingleChange' objects. This change enhances debugging capabilities and allows for more detailed analysis by leveraging structured API responses.",
+            "code": [
+                {
+                    "before": "def get_diff(self, before: str, after: str) -> str:\n    unified = \"\\n\".join(unified_diff(before.splitlines(), after.splitlines(), n=UNIFIED_DIFF_CONTEXT_LINES, lineterm=\"\"))\n    completion = self.open_ai_client.completions.create(model=MODEL, messages=[{\"role\": \"system\", \"content\": SYSTEM_MSG}, {\"role\": \"user\", \"content\": unified}])",
+                    "after": "def get_diff(self, before: str, after: str) -> List[SingleChange]:\n    print(f\"Unified diff:\\n{unified}\\n\\n\")\n    messages = [{\"role\": \"system\", \"content\": SYSTEM_MSG}, {\"role\": \"user\", \"content\": f\"{unified}\"}]\n    print(\"Sending request to OpenAI API...\")\n    completion = self.open_ai_client.chat.completions.create(model=MODEL, messages=messages, tools=[FUNCTION_V2], temperature=0.3, presence_penalty=-1)\n    print(\"Request completed\")\n    choice = completion.choices[0]\n    if choice.finish_reason == \"length\":\n        raise ValueError(\"API call failed: max tokens exceeded\")\n    print(\"Api response: \")\n    print(choice.message)\n    print(\"\\n\\n\")\n    if choice.message.tool_calls:\n        print(\"Tools!\")\n        for call in choice.message.tool_calls:\n            if call.function.arguments:\n                return parse_changesV2(call.function.arguments)\n    print(\"\\n\\n\")\n    raise ValueError(\"Function call broken\")"
+                }
+            ]
+        },
+        {
+            "short": "Added extensive logging and error handling within the get_diff method.",
+            "long": "The refactored 'get_diff' method includes additional print statements to trace the process, from printing the unified diff to logging before sending requests, and detailed reporting after receiving the API response. Error handling was enhanced to manage cases where the API call exceeds the maximum token limit, and checks the 'finish_reason' for errors, improving the robustness and transparency of the method.",
+            "code": [
+                {
+                    "before": "completion = self.open_ai_client.completions.create(model=MODEL, messages=[{\"role\": \"system\", \"content\": SYSTEM_MSG}, {\"role\": \"user\", \"content\": unified}])",
+                    "after": "completion = self.open_ai_client.chat.completions.create(model=MODEL, messages=messages, tools=[FUNCTION_V2], temperature=0.3, presence_penalty=-1)\nprint(\"Request completed\")\nchoice = completion.choices[0]\nif choice.finish_reason == \"length\":\n    raise ValueError(\"API call failed: max tokens exceeded\")\nprint(\"Api response: \")\nprint(choice.message)\nprint(\"\\n\\n\")\nif choice.message.tool_calls:\n    print(\"Tools!\")\n    for call in choice.message.tool_calls:\n        if call.function.arguments:\n            return parse_changesV2(call.function.arguments)\nprint(\"\\n\\n\")\nraise ValueError(\"Function call broken\")"
+                }
+            ]
+        }
+    ]
+}

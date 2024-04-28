@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Renamed Device struct to NetworkDevice and added a constructor function.",
+            "long": "The struct was renamed from 'Device' to 'NetworkDevice'. Additionally, a constructor function 'createDevice' was introduced to dynamically create instances of 'NetworkDevice'. This function allocates memory for the 'NetworkDevice' and its string properties, setting up the device with a given ID and name.",
+            "code": [
+                {
+                    "before": "typedef struct {\n    int id;\n    char* name;\n} Device;",
+                    "after": "typedef struct NetworkDevice {\n    int id;\n    char* name;\n} NetworkDevice;\n\nNetworkDevice* createDevice(int id, const char* name) {\n    NetworkDevice* device = malloc(sizeof(NetworkDevice));\n    device->id = id;\n    device->name = strdup(name);\n    return device;\n}"
+                }
+            ]
+        },
+        {
+            "short": "Implemented dynamic memory allocation and deallocation in main function.",
+            "long": "Updated the 'main' function to utilize the 'createDevice' constructor, thereby managing 'NetworkDevice' instances with dynamic memory. This includes allocating and deallocating memory for 'NetworkDevice' and its properties to prevent memory leaks.",
+            "code": [
+                {
+                    "before": "int main() {\n    printf(\"Initializing network...\\n\");\n    Device router = {1, \"Router\"};\n    return 0;\n}",
+                    "after": "int main() {\n    printf(\"Initializing network...\\n\");\n    NetworkDevice* router = createDevice(1, \"Router\");\n    printf(\"Device ID: %d, Device Name: %s\\n\", router->id, router->name);\n    free(router->name);\n    free(router);\n    return 0;\n}"
+                }
+            ]
+        }
+    ]
+}

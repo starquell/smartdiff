@@ -1,0 +1,23 @@
+{
+    "changes": [
+        {
+            "short": "Changed type of Indentation property in SqlFormatterOptions",
+            "long": "Modified the 'IndentationSize' property in the 'SqlFormatterOptions' struct to 'Indentation', changing its type from an integer to a 'Models.Indentation' object. This change likely allows for more detailed configuration of indentation behavior beyond just size.",
+            "locations": [
+                {
+                    "removed": {
+                        "line": 9,
+                        "col": 16,
+                        "end_col": 35
+                    },
+                    "added": {
+                        "line": 9,
+                        "col": 16,
+                        "end_line": 9,
+                        "end_col": 46
+                    }
+                }
+            ]
+        }
+    ]
+}

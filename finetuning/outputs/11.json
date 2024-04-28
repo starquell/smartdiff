@@ -1,0 +1,46 @@
+{
+    "changes": [
+        {
+            "short": "Defined PORT constant for server configuration",
+            "long": "Introduced a constant 'PORT' set to 3000, used for configuring the server's listening port. This simplifies the management of server settings and provides a clear reference point for the server's operating port.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 3,
+                        "col": 1,
+                        "end_line": 3,
+                        "end_col": 18
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added new route for datetime",
+            "long": "Added a new route '/datetime' that returns the current date and time in ISO format. This route enhances the API by providing a utility endpoint for time checks.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 9,
+                        "col": 1,
+                        "end_line": 13,
+                        "end_col": 3
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Initialized server listening on defined PORT",
+            "long": "Configured the Express app to listen on the defined 'PORT'. This addition also includes a console log statement that outputs a message when the server is successfully running, aiding in development and debugging.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 15,
+                        "col": 1,
+                        "end_line": 15,
+                        "end_col": 71
+                    }
+                }
+            ]
+        }
+    ]
+}

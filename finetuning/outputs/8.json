@@ -1,0 +1,38 @@
+{
+    "changes": [
+        {
+            "short": "Enhanced greet function with parameter and conditional logic",
+            "long": "The greet function has been updated to accept a parameter, `userName`, and includes conditional logic to personalize the greeting. If `userName` is provided, it outputs a personalized message; otherwise, it falls back to a generic greeting.",
+            "locations": [
+                {
+                    "removed": {
+                        "line": 1,
+                        "col": 1,
+                        "end_line": 2,
+                        "end_col": 33
+                    },
+                    "added": {
+                        "line": 1,
+                        "col": 1,
+                        "end_line": 6,
+                        "end_col": 5
+                    }
+                }
+            ]
+        },
+        {
+            "short": "Added function call to greet with sample user",
+            "long": "Added a direct call to the `greet` function at the end of the script, passing 'Alice' as an argument to demonstrate the function's new capability of handling personalized greetings.",
+            "locations": [
+                {
+                    "added": {
+                        "line": 9,
+                        "col": 1,
+                        "end_line": 9,
+                        "end_col": 15
+                    }
+                }
+            ]
+        }
+    ]
+}

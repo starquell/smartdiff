@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Moved private methods within the class.",
+            "long": "The private methods `isValidUser` and `logUserAccess` were relocated within the class.",
+            "code": [
+                {
+                    "before": "public void updateUser(String userId, UserInfo newData) {\n    // logic to update user details\n}\n\nprivate boolean isValidUser(String userId) {\n    // check if user exists in the database\n    return true;\n}\n\nprivate void logUserAccess(String userId) {\n    // log user access details\n}",
+                    "after": "public void deleteUser(String userId) {\n    // logic to delete a user\n}\n\nprivate boolean isValidUser(String userId) {\n    // check if user exists in the database\n    return true;\n}\n\nprivate void logUserAccess(String userId) {\n    // log user access details\n}"
+                }
+            ]
+        }
+    ]
+}

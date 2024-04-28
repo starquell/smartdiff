@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Changed return scope in authenticate_user function",
+            "long": "Moved the `return True` statement in `authenticate_user` outside the conditional block.",
+            "locations": [
+                {
+                    "removed": {
+                        "line": 6,
+                        "col": 0,
+                        "end_line": 4,
+                        "end_col": 19
+                    },
+                    "added": {
+                        "line": 6,
+                        "col": 0,
+                        "end_line": 4,
+                        "end_col": 15
+                    }
+                }
+            ]
+        }
+    ]
+}

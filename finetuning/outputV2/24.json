@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Refactored updateRecord to use database transactions.",
+            "long": "The `updateRecord` function in Go was refactored to encapsulate updates within a database transaction. Initially, the function updated user details and status in separate database calls without transaction management, which could lead to data inconsistencies in the event of an error. Now, the function starts a transaction and performs all updates within this transaction context. It rolls back the transaction if any step fails, ensuring that all changes are either fully committed or completely rolled back, which enhances the reliability and atomicity of the operation.",
+            "code": [
+                {
+                    "before": "if err := updateUserDetails(db, userID, newValues[\"details\"].(string)); err != nil {\n        return err\n    }\n    if err := updateUserStatus(db, userID, newValues[\"status\"].(string)); err != nil {\n        return err\n    }\n    return nil",
+                    "after": "tx, err := db.Begin()\n    if err != nil {\n        return err\n    }\n    if err := updateUserDetails(tx, userID, newValues[\"details\"].(string)); err != nil {\n        tx.Rollback()\n        return err\n    }\n    if err := updateUserStatus(tx, userID, newValues[\"status\"].(string)); err != nil {\n        tx.Rollback()\n        return err\n    }\n    return tx.Commit()"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Function 'displayUser' now displays user data in JSON format",
+            "long": "Added a new function 'serializeUser' to serialize user data into a JSON format using the json-c library. This function creates a JSON object, adds user ID and name to it, and returns the JSON string. The 'displayUser' function was also updated to use this serialization, enhancing its output to include a JSON representation of the user data along with the original text display.",
+            "code": [
+                {
+                    "before": "void displayUser(int userId, char* userName) {\n    printf(\"User ID: %d, User Name: %s\\n\", userId, userName);\n}",
+                    "after": "char* serializeUser(int userId, char* userName) {\n    struct json_object *jobj = json_object_new_object();\n    json_object_object_add(jobj, \"userId\", json_object_new_int(userId));\n    json_object_object_add(jobj, \"userName\", json_object_new_string(userName));\n    const char *json_string = json_object_to_json_string(jobj);\n    return strdup(json_string);\n}\n\nvoid displayUser(int userId, char* userName) {\n    char* userJson = serializeUser(userId, userName);\n    printf(\"User JSON: %s\\n\", userJson);\n    printf(\"User ID: %d, User Name: %s\\n\", userId, userName);\n}"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "changes": [
+        {
+            "short": "Added error handling for empty message in logEvent.",
+            "long": "The `logEvent` function was modified to include a preliminary check for an empty message string.",
+            "code": [
+                {
+                    "before": "fmt.Println(\"Event: \", message)",
+                    "after": "if message == \"\" {\n        fmt.Println(\"Error: Message cannot be empty\")\n        return\n    }\n    fmt.Println(\"Event: \", message)"
+                }
+            ]
+        }
+    ]
+}

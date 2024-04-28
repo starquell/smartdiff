@@ -1,0 +1,24 @@
+{
+    "changes": [
+        {
+            "short": "Refactored subprocess arguments to a separate variable",
+            "long": "Refactored the subprocess command to use a separate list for arguments, named 'args', improving code clarity and maintainability. This allows easier updates and modifications to the argument list used in subprocess calls.",
+            "code": [
+                {
+                    "before": "proc = subprocess.run(\n    [\n        \"ping\",\n        \"-c\", \"10\",\n         \"-t\", \"50\",\n    ],\n    stdout=subprocess.PIPE,\n    stderr=subprocess.PIPE,\n)",
+                    "after": "args = [\n    \"ping\",\n    \"-c\", \"10\",\n    \"-t\", \"50\",\n]\n\nproc = subprocess.run(\n    args,\n    stdout=subprocess.PIPE,\n    stderr=subprocess.PIPE,\n)"
+                }
+            ]
+        },
+        {
+            "short": "Changed the timeout parameter for the 'ping' command.",
+            "long": "The timeout parameter '-t' for the 'ping' command has been changed from '50' to '100'. This modification potentially affects the behavior of the command by allowing it to wait longer for a response before timing out.",
+            "code": [
+                {
+                    "before": "\"-t\", \"50\"",
+                    "after": "\"-t\", \"100\""
+                }
+            ]
+        }
+    ]
+}
