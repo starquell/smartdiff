@@ -10,16 +10,19 @@ from loguru import logger
 from engine.v2.change import SingleChange
 from engine.v2.output_parser import parse_changes
 import engine.v2.defines as defines
+import engine.model_info as model_info
 
 class DiffEngine:
     def __init__(self, open_ai_api_key_env: str):
         try:
             self.api_key = os.environ[open_ai_api_key_env]
         except KeyError:
-            print(f"Environment variable {open_ai_api_key_env} not set")
+            logger.critical(f"Environment variable {open_ai_api_key_env} not set")
             raise
         
         self.open_ai_client = OpenAI(api_key=self.api_key)
+        self.model = model_info.MODEL_MAP[os.environ["OPENAI_MODEL"]]
+        logger.info(f"Using model: {self.model.name}")
 
     
     def get_diff(self, before: str, after: str) -> List[SingleChange]:
@@ -35,7 +38,7 @@ class DiffEngine:
         ]
         logger.debug("Sending request to OpenAI API...")
         completion = self.open_ai_client.chat.completions.create(
-            model=defines.MODEL.name,
+            model=self.model.name,
             messages=messages,
             tools=[defines.FUNCTION],
             temperature=defines.OUTPUT_TEMPERATURE,
@@ -44,8 +47,8 @@ class DiffEngine:
         logger.debug("Request completed")
         used_input_tokens = completion.usage.prompt_tokens if completion.usage else 0
         used_output_tokens = completion.usage.completion_tokens if completion.usage else 0
-        logger.debug(f"Usage: {used_input_tokens} input tokens (~ {used_input_tokens / 1_000_000 * defines.MODEL.usd_per_1m_input_tokens} USD),"
-                     f"{used_output_tokens} input tokens (~ {used_output_tokens / 1_000_000 * defines.MODEL.usd_per_1m_output_tokens} USD)")
+        logger.debug(f"Usage: {used_input_tokens} input tokens (~ {used_input_tokens / 1_000_000 * self.model.usd_per_1m_input_tokens} USD),"
+                     f"{used_output_tokens} input tokens (~ {used_output_tokens / 1_000_000 * self.model.usd_per_1m_output_tokens} USD)")
 
         choice = completion.choices[0]
 
