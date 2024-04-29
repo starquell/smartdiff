@@ -13,7 +13,7 @@ MODEL=some-gpt-based-model
 
 2. Install dependencies
 ```
-   pip install -r /path/to/requirements.txt
+pip install -r /path/to/requirements.txt
 ```
 
 3. Run!
