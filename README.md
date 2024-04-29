@@ -11,4 +11,12 @@ OPENAI_API_KEY=sk-proj-my-token
 MODEL=some-gpt-based-model
 ```
 
-2. `python -m cli.main <original_file> <changed_file>`
+2. Install dependencies
+```
+   pip install -r /path/to/requirements.txt
+```
+
+3. Run!
+```
+python -m cli.main <original_file> <changed_file>
+```
